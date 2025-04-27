@@ -15,7 +15,7 @@ local fovTamanho = 200
 local locking = false
 
 -- Criar Menu
-local menuPos = Vector2.new(100, 100)
+local menuPos = Vector2.new(300, 300)  -- Ajuste a posição inicial para visibilidade
 local menuSize = Vector2.new(220, 300)
 local dragging = false
 local dragOffset = Vector2.new()
@@ -103,31 +103,37 @@ UserInputService.InputBegan:Connect(function(input, gameProcessed)
         if pos.X >= ToggleButton.Position.X and pos.X <= ToggleButton.Position.X + ToggleButton.Size.X and pos.Y >= ToggleButton.Position.Y and pos.Y <= ToggleButton.Position.Y + ToggleButton.Size.Y then
             aimbotAtivo = not aimbotAtivo
             UpdateTexts()
+            print("Aimbot Ativado: " .. (aimbotAtivo and "ON" or "OFF"))
         end
 
         if pos.X >= FOVMinus.Position.X and pos.X <= FOVMinus.Position.X + FOVMinus.Size.X and pos.Y >= FOVMinus.Position.Y and pos.Y <= FOVMinus.Position.Y + FOVMinus.Size.Y then
             fovTamanho = math.max(20, fovTamanho - 10)
             UpdateTexts()
+            print("FOV Atualizado: " .. fovTamanho)
         end
 
         if pos.X >= FOVPlus.Position.X and pos.X <= FOVPlus.Position.X + FOVPlus.Size.X and pos.Y >= FOVPlus.Position.Y and pos.Y <= FOVPlus.Position.Y + FOVPlus.Size.Y then
             fovTamanho = math.min(400, fovTamanho + 10)
             UpdateTexts()
+            print("FOV Atualizado: " .. fovTamanho)
         end
 
         if pos.X >= MiraMinus.Position.X and pos.X <= MiraMinus.Position.X + MiraMinus.Size.X and pos.Y >= MiraMinus.Position.Y and pos.Y <= MiraMinus.Position.Y + MiraMinus.Size.Y then
             miraVertical = math.max(0, miraVertical - 5)
             UpdateTexts()
+            print("Mira Y Atualizada: " .. miraVertical)
         end
 
         if pos.X >= MiraPlus.Position.X and pos.X <= MiraPlus.Position.X + MiraPlus.Size.X and pos.Y >= MiraPlus.Position.Y and pos.Y <= MiraPlus.Position.Y + MiraPlus.Size.Y then
             miraVertical = math.min(200, miraVertical + 5)
             UpdateTexts()
+            print("Mira Y Atualizada: " .. miraVertical)
         end
 
         if pos.X >= ResetButton.Position.X and pos.X <= ResetButton.Position.X + ResetButton.Size.X and pos.Y >= ResetButton.Position.Y and pos.Y <= ResetButton.Position.Y + ResetButton.Size.Y then
             miraVertical = 100
             UpdateTexts()
+            print("Mira Y Resetada")
         end
     end
 end)
